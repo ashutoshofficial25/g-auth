@@ -6,7 +6,7 @@ export default function Chat() {
   return (
     <div className="max-w-screen-xl mx-auto px-2 border-2 my-10 bg-gray-700 text-white">
       <div className="flex h-[90vh]">
-        <SideNav />
+        {/* <SideNav /> */}
         <div className="w-1/3 border overflow-hidden">
           <ChatsSide />
         </div>
