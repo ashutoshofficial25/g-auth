@@ -48,6 +48,14 @@ export default function Routes() {
             </>
           ),
         },
+        {
+          path: 'chat',
+          element: (
+            <>
+              <Chat />
+            </>
+          ),
+        },
       ],
     },
   ]);
@@ -56,3 +64,4 @@ export default function Routes() {
 const Home = Loadable(lazy(() => import('./pages/home')));
 const User = Loadable(lazy(() => import('./pages/user')));
 const Login = Loadable(lazy(() => import('./pages/login')));
+const Chat = Loadable(lazy(() => import('./pages/chat/index')));
