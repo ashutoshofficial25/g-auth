@@ -11,7 +11,7 @@ import {
 // @types
 import { SendMessage } from '../../@types/chat';
 // utils
-import uuidv4 from 'uuidv4';
+// import uuidv4 from 'uuidv4';
 // components
 import Iconify from '../../components/Iconify';
 // import EmojiPicker from '../../components/EmojiPicker';
@@ -59,7 +59,7 @@ export default function ChatMessageInput({
     if (onSend && conversationId) {
       onSend({
         conversationId,
-        messageId: uuidv4.uuid(),
+        messageId: 'jhjkhjhiigggg',
         message,
         contentType: 'text',
         attachments: [],

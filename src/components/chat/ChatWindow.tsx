@@ -24,7 +24,7 @@ import ChatHeaderCompose from './ChatHeaderCompose';
 
 // ----------------------------------------------------------------------
 
-const conversationSelector = (state: RootState): Conversation => {
+const conversationSelector = (state: any): Conversation => {
   const { conversations, activeConversationId } = state.chat;
   const conversation = activeConversationId
     ? conversations.byId[activeConversationId]
@@ -95,7 +95,7 @@ export default function ChatWindow() {
 
   return (
     <Stack sx={{ flexGrow: 1, minWidth: '1px' }}>
-      {mode === 'DETAIL' ? (
+      {/* {mode === 'DETAIL' ? (
         <ChatHeaderDetail participants={displayParticipants} />
       ) : (
         <ChatHeaderCompose
@@ -103,11 +103,11 @@ export default function ChatWindow() {
           contacts={Object.values(contacts.byId)}
           onAddRecipients={handleAddRecipients}
         />
-      )}
+      )} */}
 
       <Divider />
 
-      <Box sx={{ flexGrow: 1, display: 'flex', overflow: 'hidden' }}>
+      {/* <Box sx={{ flexGrow: 1, display: 'flex', overflow: 'hidden' }}>
         <Stack sx={{ flexGrow: 1 }}>
           <ChatMessageList conversation={conversation} />
 
@@ -126,7 +126,7 @@ export default function ChatWindow() {
             participants={displayParticipants}
           />
         )}
-      </Box>
+      </Box> */}
     </Stack>
   );
 }

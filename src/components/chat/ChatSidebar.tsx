@@ -139,12 +139,12 @@ export default function ChatSidebar() {
     <>
       <Box sx={{ py: 2, px: 3 }}>
         <Stack direction="row" alignItems="center" justifyContent="center">
-          {!isCollapse && (
+          {
             <>
               <ChatAccount />
               <Box sx={{ flexGrow: 1 }} />
             </>
-          )}
+          }
 
           <IconButton onClick={handleToggleSidebar}>
             <Iconify
@@ -158,26 +158,22 @@ export default function ChatSidebar() {
             />
           </IconButton>
 
-          {!isCollapse && (
-            // onClick={() => navigate(PATH_DASHBOARD.chat.new)}
-            <IconButton>
-              <Iconify icon={'eva:edit-fill'} width={20} height={20} />
-            </IconButton>
-          )}
+          {/* onClick={() => navigate(PATH_DASHBOARD.chat.new)} */}
+          <IconButton>
+            <Iconify icon={'eva:edit-fill'} width={20} height={20} />
+          </IconButton>
         </Stack>
 
-        {!isCollapse && (
-          <ChatContactSearch
-            query={searchQuery}
-            onFocus={handleSearchFocus}
-            onChange={handleChangeSearch}
-            onClickAway={handleClickAwaySearch}
-          />
-        )}
+        <ChatContactSearch
+          query={searchQuery}
+          onFocus={handleSearchFocus}
+          onChange={handleChangeSearch}
+          onClickAway={handleClickAwaySearch}
+        />
       </Box>
 
       <>
-        {!displayResults ? (
+        {/* {!displayResults ? (
           <ChatConversationList
             conversations={conversations}
             isOpenSidebar={openSidebar}
@@ -190,55 +186,31 @@ export default function ChatSidebar() {
             results={searchResults}
             onSelectContact={handleSelectContact}
           />
-        )}
+        )} */}
       </>
     </>
   );
 
   return (
     <>
-      {!isDesktop && (
-        <ToggleButtonStyle onClick={handleToggleSidebar}>
-          <Iconify width={16} height={16} icon={'eva:people-fill'} />
-        </ToggleButtonStyle>
-      )}
+      <ToggleButtonStyle onClick={handleToggleSidebar}>
+        <Iconify width={16} height={16} icon={'eva:people-fill'} />
+      </ToggleButtonStyle>
 
-      {isDesktop ? (
-        <Drawer
-          open={openSidebar}
-          variant="persistent"
-          sx={{
+      <Drawer
+        open={openSidebar}
+        variant="persistent"
+        sx={{
+          width: SIDEBAR_WIDTH,
+          transition: theme.transitions.create('width'),
+          '& .MuiDrawer-paper': {
+            position: 'static',
             width: SIDEBAR_WIDTH,
-            transition: theme.transitions.create('width'),
-            '& .MuiDrawer-paper': {
-              position: 'static',
-              width: SIDEBAR_WIDTH,
-            },
-            ...(isCollapse && {
-              width: SIDEBAR_COLLAPSE_WIDTH,
-              '& .MuiDrawer-paper': {
-                width: SIDEBAR_COLLAPSE_WIDTH,
-                position: 'static',
-                transform: 'none !important',
-                visibility: 'visible !important',
-              },
-            }),
-          }}
-        >
-          {renderContent}
-        </Drawer>
-      ) : (
-        <Drawer
-          ModalProps={{ keepMounted: true }}
-          open={openSidebar}
-          onClose={handleCloseSidebar}
-          sx={{
-            '& .MuiDrawer-paper': { width: SIDEBAR_WIDTH },
-          }}
-        >
-          {renderContent}
-        </Drawer>
-      )}
+          },
+        }}
+      >
+        {renderContent}
+      </Drawer>
     </>
   );
 }

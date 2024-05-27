@@ -21,7 +21,7 @@ export default function Routes() {
           path: 'login',
           element: (
             <GuestGuard>
-              <Login />
+              <Chat />
             </GuestGuard>
           ),
         },
@@ -37,8 +37,16 @@ export default function Routes() {
       ),
       children: [
         {
-          element: <Navigate to={'/user'} replace />,
+          element: <Navigate to={'/chat'} replace />,
           index: true,
+        },
+        {
+          path: 'chat',
+          element: (
+            <>
+              <Chat />
+            </>
+          ),
         },
         {
           path: 'user',
@@ -56,3 +64,4 @@ export default function Routes() {
 const Home = Loadable(lazy(() => import('./pages/home')));
 const User = Loadable(lazy(() => import('./pages/user')));
 const Login = Loadable(lazy(() => import('./pages/login')));
+const Chat = Loadable(lazy(() => import('./pages/chat')));
